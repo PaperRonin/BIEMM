@@ -1,0 +1,15 @@
+﻿<Window x:Class="BIEMM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BIEMM"
+        mc:Ignorable="d"
+        Title="BepInEx Mod Manager"
+        Height="497"
+        Width="509"
+        Background="SlateGray" WindowStyle="None" Icon="/c=3.png">
+    <Grid>
+
+    </Grid>
+</Window>
