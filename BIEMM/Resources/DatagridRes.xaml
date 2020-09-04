@@ -1,0 +1,67 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <SolidColorBrush x:Key="DataGridBackground" Color="#4f4d4d" />
+    <SolidColorBrush x:Key="DataGridRowBackground" Color="#4f4d4d" />
+    <SolidColorBrush x:Key="DataGridRowMouseOverColor" Color="#3d3c3c" />
+    <SolidColorBrush x:Key="DataGridColumnHeaderBackground" Color="#3d3c3c" />
+    <SolidColorBrush x:Key="DataGridColumnHeaderBorderBrush" Color="Black" />
+    <SolidColorBrush x:Key="TextColor" Color="Cornsilk" />
+
+    <Style TargetType="DataGrid">
+        <Setter Property="AutoGenerateColumns" Value="False"></Setter>
+        <Setter Property="Background" Value="{StaticResource DataGridBackground}"></Setter>
+        <Setter Property="CanUserResizeColumns" Value="False"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="SelectionMode" Value="Single"></Setter>
+        <Setter Property="AreRowDetailsFrozen" Value="True"></Setter>
+        <Setter Property="CanUserAddRows" Value="False"></Setter>
+        <Setter Property="CanUserDeleteRows" Value="False"></Setter>
+        <Setter Property="CanUserResizeRows" Value="False"></Setter>
+        <Setter Property="ClipboardCopyMode" Value="None"></Setter>
+        <Setter Property="HeadersVisibility" Value="Column"></Setter>
+
+    </Style>
+
+    <Style x:Key="{x:Type DataGridCell}" TargetType="{x:Type DataGridCell}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Self}, Path=Foreground}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type DataGridRow}">
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Background" Value="{StaticResource DataGridRowBackground}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+        <Setter Property="Height" Value="30" />
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Self}, Path=Foreground}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource DataGridRowMouseOverColor}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style  TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="#3d3c3c" />
+        <Setter Property="Foreground" Value="{StaticResource TextColor}" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="BorderBrush" Value="{StaticResource DataGridColumnHeaderBorderBrush}" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+</ResourceDictionary>

@@ -5,11 +5,114 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BIEMM"
         mc:Ignorable="d"
-        Title="BepInEx Mod Manager"
-        Height="497"
-        Width="509"
-        Background="SlateGray" WindowStyle="None" Icon="/c=3.png">
+        Style="{StaticResource MainMenu}"
+        MouseLeftButtonDown="MainWindow_OnMouseLeftButtonDown">
+
+
     <Grid>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="197*"/>
+            <ColumnDefinition Width="250*"/>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="37*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="CloseButton"
+                Style="{StaticResource MenuButton}"
+                FontWeight="Bold" 
+                Grid.Row="0" 
+                Grid.Column="5"
+                Click="CloseButton_OnClick">X</Button>
+
+        <Button x:Name="MinimizeButton"
+                Style="{StaticResource MenuButton}"
+                FontWeight="Bold" 
+                Margin="-22,0,23,0"  
+                Grid.Row="0" 
+                Grid.Column="5"
+                Click="MinimizeButton_OnClick">_</Button>
+
+
+        <DataGrid x:Name="ModMenu"
+                  ItemsSource="{Binding}"
+                  Grid.Row="2" 
+                  Grid.RowSpan="9" 
+                  Grid.Column="1" 
+                  Grid.ColumnSpan="2">
+
+            <DataGrid.Columns>
+                <DataGridTemplateColumn  Header="Enabled" Width="4*"
+                                         CanUserReorder="False"
+                                         CanUserSort="False"
+                                         CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      IsChecked="{Binding IsEnabled,
+                                UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn  Header="Type"
+                                     Width="3*"
+                                     Binding="{Binding ModType}"
+                                     CanUserReorder="False"
+                                     IsReadOnly="True"
+                                     CanUserSort="False">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Name" 
+                                    Width="12*" 
+                                    Binding="{Binding ModName}"
+                                    CanUserReorder="False" 
+                                    IsReadOnly="True" 
+                                    CanUserSort="False" 
+                                    CanUserResize="False"
+                                    >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                            <Setter Property="Margin" Value="5,0,0,0" />
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Style="{StaticResource MenuButton}" Grid.Row="2" Grid.Column="4">Open Mods Folder</Button>
+        <Button Style="{StaticResource MenuButton}" Grid.Row="4" Grid.Column="4">Reload List</Button>
+        <Button Style="{StaticResource MenuButton}" Grid.Row="6" Grid.Column="4">Apply Mods</Button>
+        <Button Style="{StaticResource MenuButton}" Grid.Row="8" Grid.Column="4">Run Game</Button>
+
+        <Image Grid.Row="10" Grid.Column="4" Margin="0,0,22,0" Grid.ColumnSpan="2"   Source="/Resources/Images/slgct.jpg" />
 
     </Grid>
 </Window>
