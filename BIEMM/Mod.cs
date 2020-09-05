@@ -4,16 +4,7 @@ namespace BIEMM
 {
     public class Mod
     {
-        private bool _isEnabled;
-        public bool IsEnabled
-        {
-            get => _isEnabled;
-            set
-            {
-                Debug.WriteLine("changed to " + value);
-                _isEnabled = value;
-            }
-        }
+        public bool IsEnabled { get; set; }
         public ModTypes ModType { get; set; }
         public string ModName { get; set; }
 
@@ -24,9 +15,9 @@ namespace BIEMM
             ModName = "???";
         }
 
-        public Mod(ModTypes type, string name)
+        public Mod(bool isEnabled, ModTypes type, string name)
         {
-            IsEnabled = false;
+            IsEnabled = isEnabled;
             ModType = type;
             ModName = name;
         }

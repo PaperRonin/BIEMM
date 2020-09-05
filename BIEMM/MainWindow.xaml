@@ -108,10 +108,10 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Style="{StaticResource MenuButton}" Grid.Row="2" Grid.Column="4">Open Mods Folder</Button>
-        <Button Style="{StaticResource MenuButton}" Grid.Row="4" Grid.Column="4">Reload List</Button>
-        <Button Style="{StaticResource MenuButton}" Grid.Row="6" Grid.Column="4">Apply Mods</Button>
-        <Button Style="{StaticResource MenuButton}" Grid.Row="8" Grid.Column="4">Run Game</Button>
+        <Button x:Name="OpenModsButton" Style="{StaticResource MenuButton}" Grid.Row="2" Grid.Column="4" Click="OpenModsButton_Click">Open Mods Folder</Button>
+        <Button x:Name="ReloadListButton" Style="{StaticResource MenuButton}" Grid.Row="4" Grid.Column="4" Click="ReloadListButton_Click">Reload List</Button>
+        <Button x:Name="ApplyModsButton" Style="{StaticResource MenuButton}" Grid.Row="6" Grid.Column="4" Click="ApplyModsButton_Click">Apply Mods</Button>
+        <Button x:Name="RunGameButton" Style="{StaticResource MenuButton}" Grid.Row="8" Grid.Column="4" Click="RunGameButton_Click">Run Game</Button>
 
         <Image Grid.Row="10" Grid.Column="3" Margin="21,12,1,-3" Grid.ColumnSpan="2"   Source="/Resources/Images/slgct.jpg" Grid.RowSpan="2" />
 
