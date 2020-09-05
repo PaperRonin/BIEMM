@@ -13,6 +13,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod">
+      <HintPath>MonoMod.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\Images\c_3.png" />
     <Resource Include="Resources\Images\slgct.jpg" />
   </ItemGroup>

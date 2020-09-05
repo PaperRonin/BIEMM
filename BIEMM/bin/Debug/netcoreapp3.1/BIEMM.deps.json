@@ -7,8 +7,28 @@
   "targets": {
     ".NETCoreApp,Version=v3.1": {
       "BIEMM/1.0.0": {
+        "dependencies": {
+          "Mono.Cecil": "0.10.4.0",
+          "MonoMod": "20.8.3.5"
+        },
         "runtime": {
           "BIEMM.dll": {}
+        }
+      },
+      "Mono.Cecil/0.10.4.0": {
+        "runtime": {
+          "Mono.Cecil.dll": {
+            "assemblyVersion": "0.10.4.0",
+            "fileVersion": "0.10.4.0"
+          }
+        }
+      },
+      "MonoMod/20.8.3.5": {
+        "runtime": {
+          "MonoMod.exe": {
+            "assemblyVersion": "20.8.3.5",
+            "fileVersion": "20.8.3.5"
+          }
         }
       }
     }
@@ -16,6 +36,16 @@
   "libraries": {
     "BIEMM/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Mono.Cecil/0.10.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MonoMod/20.8.3.5": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Resources;
+using System.Text.Json.Serialization;
+using BIEMM.Utils;
+using Microsoft.Win32;
 
 namespace BIEMM
 {
@@ -39,7 +34,13 @@ namespace BIEMM
                 ModList.Add(new Mod());
             }
             ModList.Add(new Mod(ModTypes.Patch, "SUPERMEGALONGTEXTOFDEATHTHATNOONEEVERSEEN"));
+
+            //Debug.WriteLine("-------------------------------");
+            //Debug.WriteLine(CheckType(@"C:\Users\Миша\Desktop\Mods\Beastmaster.dll"));
+            //Debug.WriteLine(CheckType(@"C:\Users\Миша\Desktop\Mods\PublicityStunt.dll"));
         }
+
+
 
         private void MainWindow_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -54,6 +55,49 @@ namespace BIEMM
         private void MinimizeButton_OnClick(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            string AppDirPath = Directory.GetParent(Assembly.GetEntryAssembly().Location).FullName;
+            string exePathSaveFile = Path.GetFullPath(Path.Combine(AppDirPath, "exePath.txt"));
+            if (File.Exists(exePathSaveFile))
+            {
+                if (File.Exists(File.ReadAllText(exePathSaveFile)))
+                {
+                    PathList.GeneratePaths(File.ReadAllText(exePathSaveFile));
+                    return;
+                }
+                MessageBoxResult result = MessageBox.Show("Couldn't find .exe file, make sure that path is correct",
+                    "BIEMM",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Select game .exe file",
+                    "BIEMM",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Exclamation);
+            }
+
+            string fileName = "";
+            OpenFileDialog selectedFile = new OpenFileDialog
+            {
+                Title = "Select .exe file",
+                Filter = "Image Files|*.EXE;"
+            };
+
+            if ((bool)selectedFile.ShowDialog())
+            {
+                fileName = selectedFile.FileName;
+            }
+
+            if (fileName != "")
+            {
+                File.WriteAllText(@"exePath.txt", fileName);
+                PathList.GeneratePaths(fileName);
+            }
         }
     }
 }

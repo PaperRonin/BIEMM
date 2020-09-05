@@ -20,3 +20,6 @@ C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\BIEMM.genrunt
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\App.baml
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\Resources\DatagridRes.baml
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\Resources\WindowRes.baml
+C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Debug\netcoreapp3.1\Mono.Cecil.dll
+C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\BIEMM.csproj.CopyComplete
+C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Debug\netcoreapp3.1\MonoMod.exe
