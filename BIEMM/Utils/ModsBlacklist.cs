@@ -6,7 +6,8 @@ namespace BIEMM.Utils
     {
         public static List<string> BlacklistedMods = new List<string>()
         {
-
+            "PatchNothing",
+            "LogFix"
         };
     }
 }

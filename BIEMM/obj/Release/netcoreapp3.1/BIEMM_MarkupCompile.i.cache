@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\
+C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\
 BIEMM
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
+TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Миша\source\repos\BIEMM\BIEMM\App.xaml
 3-1494885627
 
-11-1131930381
+11-2003745163
 1941111642417
 MainWindow.xaml;Resources\DatagridRes.xaml;Resources\WindowRes.xaml;
 
-True
+False
 

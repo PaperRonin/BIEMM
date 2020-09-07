@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -18,27 +19,14 @@ namespace BIEMM
     public partial class MainWindow : Window
     {
 
-        public List<Mod> ModList { get; set; }
+        public ObservableCollection<Mod> ModList { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
 
-            ModList = new List<Mod>();
+            ModList = new ObservableCollection<Mod>();
             ModMenu.DataContext = ModList;
-            //var t = new Mod(ModTypes.Mod, "Bepis");
-            //ModList.Add(t);
-            //t.IsEnabled = true;
-            //for (int i = 0; i < 20; i++)
-            //{
-
-            //    ModList.Add(new Mod());
-            //}
-            //ModList.Add(new Mod(ModTypes.Patch, "SUPERMEGALONGTEXTOFDEATHTHATNOONEEVERSEEN"));
-
-            //Debug.WriteLine("-------------------------------");
-            //Debug.WriteLine(CheckType(@"C:\Users\Миша\Desktop\Mods\Beastmaster.dll"));
-            //Debug.WriteLine(CheckType(@"C:\Users\Миша\Desktop\Mods\PublicityStunt.dll"));
         }
 
 
@@ -121,22 +109,19 @@ namespace BIEMM
 
         private void ApplyModsButton_Click(object sender, RoutedEventArgs e)
         {
-
+           ModManager.ApplyMods(ModList);
         }
-
         private void RunGameButton_Click(object sender, RoutedEventArgs e)
         {
-
-            //TODO
             try
-            {
-                Process p = new Process();
-                //read game id and launch it through steam
-                var appId = Path.Combine(Directory.GetParent(Utils.PathList.ExePath).FullName, "appid.txt");
-                p.StartInfo.FileName = "steam://rungameid/" + File.ReadAllText(appId);
-                p.Start();
+            { 
+                Process.Start(new ProcessStartInfo
+                {
+                    Arguments = "steam://rungameid/" + File.ReadAllText(Path.Combine(Directory.GetParent(Utils.PathList.ExePath).FullName, "appid.txt")),
+                    FileName = "explorer.exe"
+                });
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 MessageBoxResult msgBox = MessageBox.Show("Couldn't run the game through steam, run game locally?",
                     "BIEMM",
