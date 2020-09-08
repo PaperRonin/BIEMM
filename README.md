@@ -1,2 +1,10 @@
-# BIEMM
-BepInEx mod manager for Rain World
+<h1 align="center"> BepInExModManager </h1>
+<p align="center">
+  <img align="center" src="https://raw.githubusercontent.com/PaperRonin/BIEMM/master/BIEMM/Resources/Images/c_3.png?token=ANTCOVNUDKMMAB75SVXFRAS7K6NBS">
+</p>
+
+This is a mod manager, currently tuned to work with the Rain World BepInEx ([Link](https://discord.com/channels/291184728944410624/431534164932689921/723915046648021053)) made by Bee
+## Installation
+1. [Download](https://github.com/PaperRonin/BIEMM/releases/download/0.8/BIEMM.zip) the mod manager.
+2. Unpack it anywhere you want and launch BIEMM.exe.
+3. Select path to the RainWorld.exe file.
