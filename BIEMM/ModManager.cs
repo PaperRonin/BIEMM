@@ -1,26 +1,22 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
+﻿using BIEMM.Utils;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Windows.Documents;
-using BIEMM.Utils;
 
 namespace BIEMM
 {
     public static class ModManager
     {
         private static ObservableCollection<Mod> ModList { get; set; }
-        private static bool ModToggle { get; set; }
+        public static bool ModToggle { get; set; }
         public static void BindModList(ObservableCollection<Mod> modList) => ModList = modList;
 
         public static void LoadAllMods()
         {
-            LoadModsFromFolder( PathList.ModsPath);
-            LoadModsFromFolder( PathList.BepPatchPath);
-            LoadModsFromFolder( PathList.BepModsPath);
+            LoadModsFromFolder(PathList.ModsPath);
+            LoadModsFromFolder(PathList.PatchPath);
+            LoadModsFromFolder(PathList.BepPatchPath);
+            LoadModsFromFolder(PathList.BepModsPath);
         }
 
         internal static void ToggleAllMods()
@@ -53,17 +49,19 @@ namespace BIEMM
             foreach (var modFile in (new DirectoryInfo(folderPath)).GetFiles("*.dll"))
             {
                 Mod modToAdd = LoadMod(modFile);
-                modToAdd.IsEnabled = folderPath != PathList.ModsPath;
-                modToAdd.Meta.CurrentlyEnabled = folderPath != PathList.ModsPath;
+                modToAdd.Meta.CurrentlyEnabled = folderPath != PathList.ModsPath && folderPath != PathList.PatchPath;
+                modToAdd.IsEnabled = modToAdd.Meta.CurrentlyEnabled;
 
                 if (Utils.ModsBlacklist.BlacklistedMods.Contains(modToAdd.ModName))
                 {
                     continue;
                 }
 
-                if (!File.Exists(Path.Combine(PathList.ModsPath, modToAdd.ModName)) && folderPath != PathList.ModsPath)
+                if (!File.Exists(Path.Combine(PathList.ModsPath, modToAdd.ModName)) && folderPath == PathList.BepModsPath ||
+                    !File.Exists(Path.Combine(PathList.PatchPath, modToAdd.ModName)) && folderPath == PathList.BepPatchPath)
                 {
-                    File.Delete(modFile.FullName);
+                    Debug.WriteLine(modToAdd.ModName);
+                    //File.Delete(modFile.FullName);
                     continue;
                 }
 
@@ -102,7 +100,7 @@ namespace BIEMM
             var mod = new Mod()
             {
                 IsEnabled = false,
-                ModType = Utils.ModTypeChecker.GetModType(file.FullName),
+                ModType = Utils.ModTypeChecker.GetModType(file),
                 ModName = Path.GetFileNameWithoutExtension(file.Name),
                 Meta = new ModMeta(File.GetLastWriteTime(file.FullName))
             };
@@ -115,7 +113,7 @@ namespace BIEMM
 
         private static bool EnableMod(Mod mod)
         {
-            string pathToFile = Path.Combine(PathList.ModsPath, mod.ModName);
+            string pathToFile = mod.ModType == ModTypes.Patch ? Path.Combine(PathList.PatchPath, mod.ModName) : Path.Combine(PathList.ModsPath, mod.ModName);
             File.Create(pathToFile);
             pathToFile += ".dll";
             if (File.Exists(pathToFile))
@@ -144,8 +142,16 @@ namespace BIEMM
             mod.Meta.CurrentlyEnabled = false;
             if (File.Exists(pathToFile))
             {
-                Directory.Move(pathToFile, Path.Combine(PathList.ModsPath, mod.ModName + ".dll"));
-                File.Delete(Path.Combine(PathList.ModsPath, mod.ModName));
+                if (mod.ModType == ModTypes.Patch)
+                {
+                    Directory.Move(pathToFile, Path.Combine(PathList.PatchPath, mod.ModName + ".dll"));
+                    File.Delete(Path.Combine(PathList.PatchPath, mod.ModName));
+                }
+                else
+                {
+                    Directory.Move(pathToFile, Path.Combine(PathList.ModsPath, mod.ModName + ".dll"));
+                    File.Delete(Path.Combine(PathList.ModsPath, mod.ModName));
+                }
                 return true;
             }
 
@@ -169,7 +175,14 @@ namespace BIEMM
                     continue;
                 }
 
-                File.Create(Path.Combine(PathList.ModsPath, modName)).Close();
+                if (folderPath == PathList.BepPatchPath)
+                {
+                    File.Create(Path.Combine(PathList.PatchPath, modName)).Close();
+                }
+                else
+                {
+                    File.Create(Path.Combine(PathList.ModsPath, modName)).Close();
+                }
             }
         }
     }

@@ -1,14 +1,22 @@
-﻿using Mono.Cecil;
-using System;
-using System.Collections.Generic;
+﻿using System.IO;
 
 namespace BIEMM.Utils
 {
     public static class ModTypeChecker
     {
-        //Patch checker from PartialityLauncher
-        public static ModTypes GetModType(string modFile)
+        public static ModTypes GetModType(FileInfo modFile)
         {
+            if (modFile.Directory.FullName == Utils.PathList.PatchPath || modFile.Directory.FullName == Utils.PathList.BepPatchPath)
+            {
+                return ModTypes.Patch;
+            }
+
+            return ModTypes.Mod;
+
+            /* https://discordapp.com/channels/291184728944410624/305139167300550666/752915891980730450
+             
+            Patch checker from PartialityLauncher
+            
             try
             {
                 ModuleDefinition modDef = ModuleDefinition.ReadModule(modFile);
@@ -43,7 +51,7 @@ namespace BIEMM.Utils
             catch (Exception)
             {
                 return ModTypes.None;
-            }
+            }*/
 
 
         }

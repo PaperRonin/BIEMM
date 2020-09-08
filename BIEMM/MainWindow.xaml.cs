@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BIEMM.Utils;
+using Microsoft.Win32;
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
-using System.Resources;
-using System.Text.Json.Serialization;
-using System.Windows.Controls.Primitives;
-using BIEMM.Utils;
-using Microsoft.Win32;
 
 namespace BIEMM
 {
@@ -87,7 +83,6 @@ namespace BIEMM
 
                 ModManager.GeneratePlaceholders(PathList.BepPatchPath);
                 ModManager.GeneratePlaceholders(PathList.BepModsPath);
-                File.Create(Path.Combine(PathList.ModsPath, "1 Deleting files here will delete the corresponding mod")).Close();
 
                 ModManager.LoadAllMods();
             }
@@ -97,7 +92,7 @@ namespace BIEMM
         {
             Process.Start(new ProcessStartInfo
             {
-                Arguments = Utils.PathList.ModsPath,
+                Arguments = Utils.PathList.ModsFolderPath,
                 FileName = "explorer.exe"
             });
         }
@@ -105,6 +100,7 @@ namespace BIEMM
         private void ReloadListButton_Click(object sender, RoutedEventArgs e)
         {
             ModList.Clear();
+            ModManager.ModToggle = false;
             ModManager.LoadAllMods();
         }
 
