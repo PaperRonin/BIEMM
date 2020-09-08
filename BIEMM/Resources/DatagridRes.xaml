@@ -1,5 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:Class="BIEMM.Resources.DataGridRes"
+                    x:ClassModifier="public">
 
 
     <SolidColorBrush x:Key="DataGridBackground" Color="#4f4d4d" />
@@ -64,4 +66,25 @@
         <Setter Property="FontSize" Value="14" />
     </Style>
 
+    <Style TargetType="DataGridColumnHeader" x:Key="IsEnabledHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+        <EventSetter Event="Click" Handler="IsEnabledHeader_Click" />
+        <Style.Triggers>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsPressed" Value="False" />
+                    <Condition Property="IsMouseOver" Value="True" />
+                    <Condition Property="IsMouseCaptured" Value="True" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Background" Value="{StaticResource MenuButtonBackground}"></Setter>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+
+
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{StaticResource MenuButtonPressedColor}"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

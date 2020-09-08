@@ -1,11 +1,27 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace BIEMM
 {
-    public class Mod
+    public class Mod : INotifyPropertyChanged
     {
-        public bool IsEnabled { get; set; }
+        private bool _isEnabled;
+
+        public bool IsEnabled
+        {
+            get
+            {
+                return _isEnabled;
+            }
+            set
+            {
+                _isEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ModTypes ModType { get; set; }
         public string ModName { get; set; }
         public ModMeta Meta { get; set; }
@@ -24,6 +40,13 @@ namespace BIEMM
             ModType = type;
             ModName = name;
             Meta.LastModified = lastModified;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 

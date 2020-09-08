@@ -23,3 +23,4 @@ C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\Resources\Win
 C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Debug\netcoreapp3.1\Mono.Cecil.dll
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\BIEMM.csproj.CopyComplete
 C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Debug\netcoreapp3.1\MonoMod.exe
+C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\Resources\DataGridRes.g.cs

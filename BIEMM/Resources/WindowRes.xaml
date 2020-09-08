@@ -7,12 +7,19 @@
     <SolidColorBrush x:Key="MenuButtonBackground" Color="#3d3c3c" />
     <SolidColorBrush x:Key="TextColor" Color="Cornsilk" />
     <SolidColorBrush x:Key="MenuButtonPressedColor" Color="#2e2d2d" />
+    <SolidColorBrush x:Key="WindowHeaderColor" Color="#3d3c3c" />
+    <SolidColorBrush x:Key="WindowHeaderButtonsColor" Color="#2e2d2d" />
+
+    <Style TargetType="Rectangle" x:Key="Header">
+        <Setter Property="Fill" Value="{StaticResource WindowHeaderColor}"></Setter>
+        <Setter Property="Margin" Value="0,0,0,-2"></Setter>
+    </Style>
 
     <Style TargetType="Window" x:Key="MainMenu">
         <Setter Property="Title" Value="BeepInEx Mod Manager"></Setter>
         <Setter Property="Background" Value="{StaticResource WindowBackground}"></Setter>
         <Setter Property="Height" Value="500"></Setter>
-        <Setter Property="Width" Value="510"></Setter>
+        <Setter Property="Width" Value="520"></Setter>
         <Setter Property="WindowStyle" Value="None"></Setter>
         <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}"></Setter>
         <Setter Property="BorderThickness" Value="2"></Setter>

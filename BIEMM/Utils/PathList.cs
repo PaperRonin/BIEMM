@@ -22,7 +22,6 @@ namespace BIEMM.Utils
             BepModsPath = Path.GetFullPath(Path.Combine(tempGameDirPath, "BepInEx", "plugins"));
 
             BepPatchPath = Path.GetFullPath(Path.Combine(tempGameDirPath, "BepInEx", "monomod"));
-
         }
     }
 }

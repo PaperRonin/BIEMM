@@ -10,7 +10,7 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Resources\DatagridRes.xaml">
+    <Page Update="Resources\DataGridRes.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\WindowRes.xaml">

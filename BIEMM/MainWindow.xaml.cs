@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Resources;
 using System.Text.Json.Serialization;
+using System.Windows.Controls.Primitives;
 using BIEMM.Utils;
 using Microsoft.Win32;
 
@@ -27,13 +28,7 @@ namespace BIEMM
 
             ModList = new ObservableCollection<Mod>();
             ModMenu.DataContext = ModList;
-        }
-
-
-
-        private void MainWindow_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
+            ModManager.BindModList(ModList);
         }
 
         private void CloseButton_OnClick(object sender, RoutedEventArgs e)
@@ -56,7 +51,7 @@ namespace BIEMM
                 if (File.Exists(File.ReadAllText(exePathSaveFile)))
                 {
                     PathList.GeneratePaths(File.ReadAllText(exePathSaveFile));
-                    ModManager.LoadAllMods(ModList);
+                    ModManager.LoadAllMods();
                     return;
                 }
                 MessageBox.Show("Couldn't find .exe file, make sure that path is correct",
@@ -76,7 +71,8 @@ namespace BIEMM
             OpenFileDialog selectedFile = new OpenFileDialog
             {
                 Title = "Select .exe file",
-                Filter = "Image Files|*.EXE;"
+                Filter = "Image Files|*.EXE;",
+                InitialDirectory = @"C:\Program Files (x86)\Steam\steamapps\common\Rain World\"
             };
 
             if ((bool)selectedFile.ShowDialog())
@@ -88,7 +84,12 @@ namespace BIEMM
             {
                 File.WriteAllText(@"exePath.txt", fileName);
                 PathList.GeneratePaths(fileName);
-                ModManager.LoadAllMods(ModList);
+
+                ModManager.GeneratePlaceholders(PathList.BepPatchPath);
+                ModManager.GeneratePlaceholders(PathList.BepModsPath);
+                File.Create(Path.Combine(PathList.ModsPath, "1 Deleting files here will delete the corresponding mod")).Close();
+
+                ModManager.LoadAllMods();
             }
         }
 
@@ -104,17 +105,17 @@ namespace BIEMM
         private void ReloadListButton_Click(object sender, RoutedEventArgs e)
         {
             ModList.Clear();
-            ModManager.LoadAllMods(ModList);
+            ModManager.LoadAllMods();
         }
 
         private void ApplyModsButton_Click(object sender, RoutedEventArgs e)
         {
-           ModManager.ApplyMods(ModList);
+            ModManager.ApplyMods();
         }
         private void RunGameButton_Click(object sender, RoutedEventArgs e)
         {
             try
-            { 
+            {
                 Process.Start(new ProcessStartInfo
                 {
                     Arguments = "steam://rungameid/" + File.ReadAllText(Path.Combine(Directory.GetParent(Utils.PathList.ExePath).FullName, "appid.txt")),
@@ -133,5 +134,11 @@ namespace BIEMM
                 }
             }
         }
+
+        private void Header_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
     }
 }

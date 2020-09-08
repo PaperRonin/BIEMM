@@ -2,6 +2,7 @@
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Documents;
@@ -11,16 +12,30 @@ namespace BIEMM
 {
     public static class ModManager
     {
-        public static void LoadAllMods(ObservableCollection<Mod> modList)
+        private static ObservableCollection<Mod> ModList { get; set; }
+        private static bool ModToggle { get; set; }
+        public static void BindModList(ObservableCollection<Mod> modList) => ModList = modList;
+
+        public static void LoadAllMods()
         {
-            LoadModsFromFolder(modList, PathList.ModsPath);
-            LoadModsFromFolder(modList, PathList.BepPatchPath);
-            LoadModsFromFolder(modList, PathList.BepModsPath);
+            LoadModsFromFolder( PathList.ModsPath);
+            LoadModsFromFolder( PathList.BepPatchPath);
+            LoadModsFromFolder( PathList.BepModsPath);
         }
 
-        public static void ApplyMods(ObservableCollection<Mod> modList)
+        internal static void ToggleAllMods()
         {
-            foreach (Mod mod in modList)
+            foreach (Mod mod in ModList)
+            {
+                mod.IsEnabled = ModToggle;
+            }
+
+            ModToggle = !ModToggle;
+        }
+
+        public static void ApplyMods()
+        {
+            foreach (Mod mod in ModList)
             {
                 if (mod.IsEnabled && !mod.Meta.CurrentlyEnabled)
                 {
@@ -33,7 +48,7 @@ namespace BIEMM
             }
         }
 
-        private static void LoadModsFromFolder(ObservableCollection<Mod> modList, string folderPath)
+        private static void LoadModsFromFolder(string folderPath)
         {
             foreach (var modFile in (new DirectoryInfo(folderPath)).GetFiles("*.dll"))
             {
@@ -46,8 +61,14 @@ namespace BIEMM
                     continue;
                 }
 
+                if (!File.Exists(Path.Combine(PathList.ModsPath, modToAdd.ModName)) && folderPath != PathList.ModsPath)
+                {
+                    File.Delete(modFile.FullName);
+                    continue;
+                }
+
                 bool isDuplicate = false;
-                foreach (var mod in modList)
+                foreach (var mod in ModList)
                 {
                     //if added mod is already applied
                     if (mod.ModName == modToAdd.ModName)
@@ -62,21 +83,16 @@ namespace BIEMM
 
                 if (isDuplicate)
                 {
-                    break;
-                }
-
-                if (modToAdd.IsEnabled)
-                {
-                    File.Create(Path.Combine(PathList.ModsPath, modToAdd.ModName));
+                    continue;
                 }
 
                 if (modToAdd.ModType == ModTypes.Mod)
                 {
-                    modList.Add(modToAdd);
+                    ModList.Add(modToAdd);
                 }
                 else
                 {
-                    modList.Insert(0, modToAdd);
+                    ModList.Insert(0, modToAdd);
                 }
             }
         }
@@ -110,8 +126,9 @@ namespace BIEMM
                 }
                 else
                 {
-                    Directory.Move(pathToFile, Path.Combine(PathList.BepModsPath, "Assembly-CSharp." + mod.ModName + ".mm.dll"));
+                    Directory.Move(pathToFile, Path.Combine(PathList.BepPatchPath, "Assembly-CSharp." + mod.ModName + ".mm.dll"));
                 }
+                mod.Meta.CurrentlyEnabled = true;
                 return true;
             }
 
@@ -122,17 +139,38 @@ namespace BIEMM
         {
             var pathToFile = mod.ModType == ModTypes.Mod
                 ? Path.Combine(PathList.BepModsPath, mod.ModName + ".dll")
-                : Path.Combine(PathList.BepPatchPath, "Assembly - CSharp." + mod.ModName + ".mm.dll");
+                : Path.Combine(PathList.BepPatchPath, "Assembly-CSharp." + mod.ModName + ".mm.dll");
 
             mod.Meta.CurrentlyEnabled = false;
             if (File.Exists(pathToFile))
             {
                 Directory.Move(pathToFile, Path.Combine(PathList.ModsPath, mod.ModName + ".dll"));
+                File.Delete(Path.Combine(PathList.ModsPath, mod.ModName));
                 return true;
             }
 
             return false;
         }
 
+        public static void GeneratePlaceholders(string folderPath)
+        {
+            foreach (var modFile in (new DirectoryInfo(folderPath)).GetFiles("*.dll"))
+            {
+                var modName = Path.GetFileNameWithoutExtension(modFile.Name);
+
+                if (modFile.Directory.FullName == PathList.BepPatchPath)
+                {
+                    modName = modName.Split('.')[1];
+                }
+
+                if (Utils.ModsBlacklist.BlacklistedMods.Contains(modName) ||
+                    File.Exists(Path.Combine(PathList.ModsPath, modFile.Name)))
+                {
+                    continue;
+                }
+
+                File.Create(Path.Combine(PathList.ModsPath, modName)).Close();
+            }
+        }
     }
 }
