@@ -1,6 +1,6 @@
 <h1 align="center"> BepInExModManager </h1>
 <p align="center">
-  <img align="center" src="https://raw.githubusercontent.com/PaperRonin/BIEMM/master/BIEMM/Resources/Images/c_3.png?token=ANTCOVNUDKMMAB75SVXFRAS7K6NBS">
+  <img align="center" src="https://i.imgur.com/KYjnlPv.png">
 </p>
 
 This is a mod manager, currently tuned to work with the Rain World BepInEx ([Link](https://discord.com/channels/291184728944410624/431534164932689921/723915046648021053)) made by Bee
