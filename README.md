@@ -3,7 +3,7 @@
   <img align="center" src="https://i.imgur.com/KYjnlPv.png">
 </p>
 
-This is a mod manager, currently tuned to work with the Rain World BepInEx ([Link](https://discord.com/channels/291184728944410624/431534164932689921/723915046648021053)) made by Bee
+This is a GUI for Rain World BepInEx ([Link](https://discord.com/channels/291184728944410624/431534164932689921/723915046648021053)) made by Bee
 ## Installation
 1. [Download](https://github.com/PaperRonin/BIEMM/releases/download/0.82/BIEMM.zip) the mod manager.
 2. Unpack it anywhere you want and launch BIEMM.exe.
