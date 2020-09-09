@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace BIEMM.Utils
 {
@@ -6,12 +7,20 @@ namespace BIEMM.Utils
     {
         public static ModTypes GetModType(FileInfo modFile)
         {
-            if (modFile.Directory.FullName == Utils.PathList.PatchPath || modFile.Directory.FullName == Utils.PathList.BepPatchPath)
+            try
             {
-                return ModTypes.Patch;
-            }
+                if (modFile.Directory.FullName == Utils.PathList.PatchPath || modFile.Directory.FullName == Utils.PathList.BepPatchPath)
+                {
+                    return ModTypes.Patch;
+                }
 
-            return ModTypes.Mod;
+                return ModTypes.Mod;
+            }
+            catch (Exception exception)
+            {
+                Logger.ErrorLog(exception.Message, exception.StackTrace, exception.Source);
+                throw;
+            }
 
             /* https://discordapp.com/channels/291184728944410624/305139167300550666/752915891980730450
              

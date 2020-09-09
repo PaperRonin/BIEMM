@@ -52,7 +52,7 @@ namespace BIEMM.Resources {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BIEMM;V1.0.0.0;component/resources/datagridres.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BIEMM;component/resources/datagridres.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Resources\DataGridRes.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

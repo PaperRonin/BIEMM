@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace BIEMM.Utils
 {
@@ -13,23 +14,33 @@ namespace BIEMM.Utils
 
         public static void GeneratePaths(string exePath)
         {
-            ExePath = exePath;
+            try
+            {
+                Logger.InfoLog("Generating Paths to the mod directories");
 
-            string tempDirPath = Directory.GetParent(exePath).FullName;
+                ExePath = exePath;
 
-            BepModsPath = Path.GetFullPath(Path.Combine(tempDirPath, "BepInEx", "plugins"));
+                string tempDirPath = Directory.GetParent(exePath).FullName;
 
-            BepPatchPath = Path.GetFullPath(Path.Combine(tempDirPath, "BepInEx", "monomod"));
+                BepModsPath = Path.GetFullPath(Path.Combine(tempDirPath, "BepInEx", "plugins"));
 
-            tempDirPath = Directory.CreateDirectory(Path.GetFullPath(Path.Combine(tempDirPath, "Mods"))).FullName;
+                BepPatchPath = Path.GetFullPath(Path.Combine(tempDirPath, "BepInEx", "monomod"));
 
-            ModsFolderPath = tempDirPath;
+                tempDirPath = Directory.CreateDirectory(Path.GetFullPath(Path.Combine(tempDirPath, "Mods"))).FullName;
 
-            File.Create(Path.Combine(ModsFolderPath, "Deleting files in these folders will delete the corresponding mod")).Close();
+                ModsFolderPath = tempDirPath;
 
-            ModsPath = Directory.CreateDirectory(Path.GetFullPath(Path.Combine(ModsFolderPath, "Plugins"))).FullName;
+                File.Create(Path.Combine(ModsFolderPath, "Deleting files in these folders will delete the corresponding mod")).Close();
 
-            PatchPath = Directory.CreateDirectory(Path.GetFullPath(Path.Combine(ModsFolderPath, "Patches"))).FullName;
+                ModsPath = Directory.CreateDirectory(Path.GetFullPath(Path.Combine(ModsFolderPath, "Plugins"))).FullName;
+
+                PatchPath = Directory.CreateDirectory(Path.GetFullPath(Path.Combine(ModsFolderPath, "Patches"))).FullName;
+            }
+            catch (Exception exception)
+            {
+                Logger.ErrorLog(exception.Message, exception.StackTrace, exception.Source);
+                throw;
+            }
         }
     }
 }

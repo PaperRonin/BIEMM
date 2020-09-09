@@ -12,4 +12,10 @@
     <Resource Include="Resources\Images\slgct.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="blackList.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
