@@ -1,0 +1,31 @@
+Loading BlackList
+Checking if exe path is already saved
+Found the exe path
+Generating Paths to the mod directories
+Loading all mods from the Mods/Plugins
+-Loading AutoUpdate.dll
+-Loading FancySlugcats.dll
+-Loading SlugTribesMod.dll
+Loading all mods from the Mods/Patches
+-Loading slugrifle.dll
+Loading all mods from the BepInEx/plugins
+-Loading Beastmaster.dll
+-Loading BLThing.dll
+-Loading ConfigMachine.dll
+-Loading Downpour.dll
+-Loading EnumExtender.dll
+-Loading ExtendedDevtools_v1.3.dll
+-Loading Guideline.dll
+-Loading JollyCoop_v1.7.0.dll
+-Loading LogFix.dll
+---This mod is in blacklist, skipping it
+-Loading ManyMoreFixes_v0.5.1.dll
+-Loading Warp.dll
+Loading all mods from the BepInEx/monomod
+-Loading Assembly-CSharp.CheckSumFix.mm.dll
+-Loading Assembly-CSharp.CustomAssets.mm.dll
+-Loading Assembly-CSharp.PatchNothing.mm.dll
+---This mod is in blacklist, skipping it
+Applying all selected mods
+-Generating placeholder for FancySlugcats
+-Moved FancySlugcats to the BepInEx/plugins

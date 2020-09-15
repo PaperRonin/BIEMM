@@ -13,13 +13,13 @@ namespace BIEMM
             var appPath = Directory.GetParent(Assembly.GetEntryAssembly().Location).FullName;
 
             using var sw = new StreamWriter(new FileStream(appPath + "\\Error.log", FileMode.Append, FileAccess.Write));
-            sw.WriteLine("Source: " + source);
+            sw.WriteLine($"Source: {source}");
 
-            sw.WriteLine("Date / Time: " + DateTime.Now);
+            sw.WriteLine($"Date / Time: {DateTime.Now}");
 
-            sw.WriteLine("Message: " + msg);
+            sw.WriteLine($"Message: {msg}");
 
-            sw.WriteLine("StackTrace: " + stkTrace);
+            sw.WriteLine($"StackTrace: {stkTrace}");
 
             sw.WriteLine(new string('=', 100));
         }

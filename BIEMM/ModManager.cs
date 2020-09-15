@@ -14,19 +14,22 @@ namespace BIEMM
 
         public static void LoadAllMods()
         {
-            Logger.InfoLog("Loading all mods from the Mods/Plugins");
+            Logger.InfoLog($"Loading all mods from the {PathList.ModsPath}");
             LoadModsFromFolder(PathList.ModsPath);
-            Logger.InfoLog("Loading all mods from the Mods/Patches");
+
+            Logger.InfoLog($"Loading all mods from the {PathList.PatchPath}");
             LoadModsFromFolder(PathList.PatchPath);
-            Logger.InfoLog("Loading all mods from the BepInEx/plugins");
+
+            Logger.InfoLog($"Loading all mods from the {PathList.BepModsPath}");
             LoadModsFromFolder(PathList.BepModsPath);
-            Logger.InfoLog("Loading all mods from the BepInEx/monomod");
+
+            Logger.InfoLog($"Loading all mods from the {PathList.BepPatchPath}");
             LoadModsFromFolder(PathList.BepPatchPath);
         }
 
         internal static void ToggleAllMods()
         {
-            Logger.InfoLog("Toggling all mods " + ModToggle);
+            Logger.InfoLog($"Toggling all mods {ModToggle}");
             foreach (Mod mod in ModList)
             {
                 mod.IsEnabled = ModToggle;
@@ -71,14 +74,14 @@ namespace BIEMM
 
                     if (Utils.ModsBlacklist.BlacklistedMods.Contains(modToAdd.ModName))
                     {
-                        Logger.InfoLog("---This mod is in blacklist, skipping it");
+                        Logger.InfoLog("--This mod is in blacklist, skipping it");
                         continue;
                     }
 
                     if (!File.Exists(Path.Combine(PathList.ModsPath, modToAdd.ModName)) && folderPath == PathList.BepModsPath ||
                         !File.Exists(Path.Combine(PathList.PatchPath, modToAdd.ModName)) && folderPath == PathList.BepPatchPath)
                     {
-                        Logger.InfoLog("-" + modToAdd.ModName + " doesn't have placeholder deleting it");
+                        Logger.InfoLog($"-{modToAdd.ModName} doesn't have placeholder deleting it");
                         File.Delete(modFile.FullName);
                         continue;
                     }
@@ -89,7 +92,7 @@ namespace BIEMM
                         //if added mod is already applied
                         if (mod.ModName == modToAdd.ModName)
                         {
-                            Logger.InfoLog("-" + modToAdd.ModName + " is already applied, overriding it with newer version");
+                            Logger.InfoLog($"-{modToAdd.ModName} is already applied, overriding it with newer version");
                             isDuplicate = true;
                             mod.IsEnabled = true;
                             mod.Meta.CurrentlyEnabled = true;
@@ -116,7 +119,7 @@ namespace BIEMM
         {
             try
             {
-                Logger.InfoLog("-Loading " + file.Name);
+                Logger.InfoLog($"-Loading {file.Name}");
                 var mod = new Mod()
                 {
                     IsEnabled = false,
@@ -141,7 +144,7 @@ namespace BIEMM
         {
             try
             {
-                Logger.InfoLog("-Generating placeholder for " + mod.ModName);
+                Logger.InfoLog($"-Generating placeholder for {mod.ModName}");
                 string pathToFile = mod.ModType == ModTypes.Patch ? Path.Combine(PathList.PatchPath, mod.ModName) : Path.Combine(PathList.ModsPath, mod.ModName);
                 File.Create(pathToFile);
                 pathToFile += ".dll";
@@ -149,13 +152,14 @@ namespace BIEMM
                 {
                     if (mod.ModType == ModTypes.Mod)
                     {
-                        Logger.InfoLog("-Moved " + mod.ModName + " to the BepInEx/plugins");
-                        Directory.Move(pathToFile, Path.Combine(PathList.BepModsPath, mod.ModName + ".dll"));
+                        Logger.InfoLog($"-Moved {mod.ModName} to the BepInEx/plugins");
+                        Directory.Move(pathToFile, Path.Combine(PathList.BepModsPath, $"{mod.ModName}.dll"));
                     }
                     else
                     {
-                        Logger.InfoLog("-Moved " + mod.ModName + " to the BepInEx/monomod");
-                        Directory.Move(pathToFile, Path.Combine(PathList.BepPatchPath, "Assembly-CSharp." + mod.ModName + ".mm.dll"));
+                        Logger.InfoLog($"-Moved {mod.ModName} to the BepInEx/monomod");
+                        Directory.Move(pathToFile, Path.Combine(PathList.BepPatchPath,
+                            $"Assembly-CSharp.{mod.ModName}.mm.dll"));
                     }
                     mod.Meta.CurrentlyEnabled = true;
                     return true;
@@ -175,22 +179,22 @@ namespace BIEMM
             try
             {
                 var pathToFile = mod.ModType == ModTypes.Mod
-                    ? Path.Combine(PathList.BepModsPath, mod.ModName + ".dll")
-                    : Path.Combine(PathList.BepPatchPath, "Assembly-CSharp." + mod.ModName + ".mm.dll");
+                    ? Path.Combine(PathList.BepModsPath, $"{mod.ModName}.dll")
+                    : Path.Combine(PathList.BepPatchPath, $"Assembly-CSharp.{mod.ModName}.mm.dll");
 
                 mod.Meta.CurrentlyEnabled = false;
                 if (File.Exists(pathToFile))
                 {
                     if (mod.ModType == ModTypes.Patch)
                     {
-                        Logger.InfoLog("-Moved " + mod.ModName + " to the Mods/Patches and deleting it's placeholder");
-                        Directory.Move(pathToFile, Path.Combine(PathList.PatchPath, mod.ModName + ".dll"));
+                        Logger.InfoLog($"-Moved {mod.ModName} to the Mods/Patches and deleting it's placeholder");
+                        Directory.Move(pathToFile, Path.Combine(PathList.PatchPath, $"{mod.ModName}.dll"));
                         File.Delete(Path.Combine(PathList.PatchPath, mod.ModName));
                     }
                     else
                     {
-                        Logger.InfoLog("-Moved " + mod.ModName + " to the Mods/Plugins and deleting it's placeholder");
-                        Directory.Move(pathToFile, Path.Combine(PathList.ModsPath, mod.ModName + ".dll"));
+                        Logger.InfoLog($"-Moved {mod.ModName} to the Mods/Plugins and deleting it's placeholder");
+                        Directory.Move(pathToFile, Path.Combine(PathList.ModsPath, $"{mod.ModName}.dll"));
                         File.Delete(Path.Combine(PathList.ModsPath, mod.ModName));
                     }
                     return true;
@@ -224,7 +228,7 @@ namespace BIEMM
                         continue;
                     }
 
-                    Logger.InfoLog("-Generating placeholder for " + modName);
+                    Logger.InfoLog($"-Generating placeholder for {modName}");
                     if (folderPath == PathList.BepPatchPath)
                     {
                         File.Create(Path.Combine(PathList.PatchPath, modName)).Close();
