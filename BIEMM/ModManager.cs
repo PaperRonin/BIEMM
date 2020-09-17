@@ -15,14 +15,12 @@ namespace BIEMM
 
         public static void LoadAllMods()
         {
-            Logger.InfoLog($"Loading all mods from the {PathList.ModsFolderPath}");
-            LoadModsFromFolder(PathList.ModsFolderPath);
-
-            Logger.InfoLog($"Loading all mods from the {PathList.BepPluginPath}");
-            LoadModsFromFolder(PathList.BepPluginPath);
-
             Logger.InfoLog($"Loading all mods from the {PathList.BepMonomodPath}");
             LoadModsFromFolder(PathList.BepMonomodPath);
+            Logger.InfoLog($"Loading all mods from the {PathList.BepPluginPath}");
+            LoadModsFromFolder(PathList.BepPluginPath);
+            Logger.InfoLog($"Loading all mods from the {PathList.ModsFolderPath}");
+            LoadModsFromFolder(PathList.ModsFolderPath);
         }
 
         internal static void ToggleAllMods()
@@ -95,7 +93,7 @@ namespace BIEMM
                     {
                         continue;
                     }
-                    ModList.Insert(0, modToAdd);
+                    ModList.Add(modToAdd);
                 }
             }
             catch (Exception exception)
@@ -118,12 +116,13 @@ namespace BIEMM
                 }
                 string pathToMeta = Path.Combine(PathList.ModsFolderPath, $"{modName}.json");
 
-                ModMeta meta;
+                ModMeta meta = null;
                 if (File.Exists(pathToMeta))
                 {
                     meta = MetaHandler.GetMeta(pathToMeta);
                 }
-                else
+
+                if(meta == null)
                 {
                     meta = new ModMeta()
                     {

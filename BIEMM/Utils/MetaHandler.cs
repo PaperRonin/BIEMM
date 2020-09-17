@@ -8,8 +8,16 @@ namespace BIEMM.Utils
     {
         public static ModMeta GetMeta(string metaFile)
         {
-            string metaData = File.ReadAllText(metaFile);
-            return JsonConvert.DeserializeObject<ModMeta>(metaData);
+            try
+            {
+                string metaData = File.ReadAllText(metaFile);
+                return JsonConvert.DeserializeObject<ModMeta>(metaData);
+            }
+            catch (Exception exception)
+            {
+                Logger.ErrorLog(exception.Message, exception.StackTrace, exception.Source);
+                return null;
+            }
         }
 
         public static void GenerateMetaFile(ModMeta meta)
