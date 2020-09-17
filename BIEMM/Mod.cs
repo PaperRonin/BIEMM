@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace BIEMM
@@ -18,24 +17,22 @@ namespace BIEMM
             }
         }
 
-        public ModTypes ModType { get; set; }
-        public string ModName { get; set; }
+        public bool CurrentlyEnabled { get; set; }
+
         public ModMeta Meta { get; set; }
 
         public Mod()
         {
             IsEnabled = false;
-            ModType = ModTypes.None;
-            ModName = "???";
-            Meta = new ModMeta(new DateTime());
+            Meta = new ModMeta();
+            CurrentlyEnabled = false;
         }
 
-        public Mod(bool isEnabled, ModTypes type, string name, DateTime lastModified)
+        public Mod(bool isEnabled, ModTypes type, string name)
         {
             IsEnabled = isEnabled;
-            ModType = type;
-            ModName = name;
-            Meta.LastModified = lastModified;
+            Meta = new ModMeta(type, name);
+            CurrentlyEnabled = false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -46,16 +43,4 @@ namespace BIEMM
         }
     }
 
-    public class ModMeta
-    {
-        public ModMeta(DateTime lastModified)
-        {
-            LastModified = lastModified;
-            CurrentlyEnabled = false;
-
-        }
-        public DateTime LastModified { get; set; }
-        public bool CurrentlyEnabled { get; set; }
-
-    }
 }

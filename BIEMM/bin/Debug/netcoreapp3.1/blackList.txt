@@ -1,2 +1,2 @@
-PatchNothing
-LogFix
+Assembly-CSharp.PatchNothing.mm.dll
+LogFix.dll

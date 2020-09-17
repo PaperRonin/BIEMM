@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "dPrHdPRXzfQuNc63rgHtsfTy2ljEgZeoouHY8uQIevOn35dD/sO9PQraNwyGcQ2wB6Xz/Mn5tV/wu1UvmDV4Lw==",
+  "dgSpecHash": "4bFu1mhkW9iex7iKzQze+cs1Vz2BepWkim9QmEW2eiXi2lerr7S4j3295ZuTx9aHn0QD/1HVoU8vY/MSgVuDKA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Миша\\source\\repos\\BIEMM\\BIEMM\\BIEMM.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Миша\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

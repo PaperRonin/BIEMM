@@ -13,7 +13,6 @@ C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\MainWindow.ba
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\BIEMM.g.resources
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\BIEMM.AssemblyInfoInputs.cache
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\BIEMM.AssemblyInfo.cs
-C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\BIEMM.csproj.CoreCompileInputs.cache
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\BIEMM.dll
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\BIEMM.pdb
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\BIEMM.genruntimeconfig.cache
@@ -22,3 +21,8 @@ C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\Resources\Dat
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\Resources\WindowRes.baml
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\Resources\DataGridRes.g.cs
 C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Debug\netcoreapp3.1\blackList.txt
+C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\BIEMM.csproj.CoreCompileInputs.cache
+C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Debug\netcoreapp3.1\BIEMM.csproj.CopyComplete
+C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Debug\netcoreapp3.1\Mono.Cecil.dll
+C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Debug\netcoreapp3.1\MonoMod.exe

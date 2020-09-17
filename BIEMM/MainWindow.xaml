@@ -82,7 +82,7 @@
 
                 <DataGridTextColumn  Header="Type"
                                      Width="12*"
-                                     Binding="{Binding ModType}"
+                                     Binding="{Binding Meta.ModType}"
                                      CanUserReorder="False"
                                      IsReadOnly="True"
                                      CanUserSort="False">
@@ -96,7 +96,7 @@
 
                 <DataGridTextColumn Header="Name" 
                                     Width="48*" 
-                                    Binding="{Binding ModName}"
+                                    Binding="{Binding Meta.ModName}"
                                     CanUserReorder="False" 
                                     IsReadOnly="True" 
                                     CanUserSort="False" 

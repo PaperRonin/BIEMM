@@ -48,6 +48,7 @@ namespace BIEMM
 
                 if (File.Exists(exePathSaveFile))
                 {
+                    //if save game .exe path exists
                     if (File.Exists(File.ReadAllText(exePathSaveFile)))
                     {
                         Logger.InfoLog("Found the exe path");
@@ -86,10 +87,6 @@ namespace BIEMM
                     Logger.InfoLog("exe path selected, saving it");
                     File.WriteAllText(@"exePath.txt", fileName);
                     PathList.GeneratePaths(fileName);
-
-                    ModManager.GeneratePlaceholders(PathList.BepPatchPath);
-                    ModManager.GeneratePlaceholders(PathList.BepModsPath);
-
                     ModManager.LoadAllMods();
                 }
             }
