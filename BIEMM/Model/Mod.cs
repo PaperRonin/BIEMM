@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using BIEMM.Enums;
 
-namespace BIEMM
+namespace BIEMM.Model
 {
     public class Mod : INotifyPropertyChanged
     {

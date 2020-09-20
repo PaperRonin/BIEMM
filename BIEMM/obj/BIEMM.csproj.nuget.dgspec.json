@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Users\\Миша\\source\\repos\\BIEMM\\BIEMM\\BIEMM.csproj": {
-      "version": "1.0.0",
+      "version": "0.8.3",
       "restore": {
         "projectUniqueName": "C:\\Users\\Миша\\source\\repos\\BIEMM\\BIEMM\\BIEMM.csproj",
         "projectName": "BIEMM",
@@ -43,6 +43,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Autoupdater.NET.Official": {
+              "target": "Package",
+              "version": "[1.6.3, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.IO;
+using BIEMM.Model;
 using Newtonsoft.Json;
 
-namespace BIEMM.Utils
+namespace BIEMM.Utils.ModManaging
 {
     public class MetaHandler
     {
@@ -22,17 +23,9 @@ namespace BIEMM.Utils
 
         public static void GenerateMetaFile(ModMeta meta)
         {
-            try
-            {
-                Logger.InfoLog($"-Creating meta for {meta.ModName}");
-                string modMeta = JsonConvert.SerializeObject(meta, Formatting.Indented);
-                File.WriteAllText(Path.Combine(PathList.ModsFolderPath, meta.ModName + ".json"), modMeta);
-            }
-            catch (Exception exception)
-            {
-                Logger.ErrorLog(exception.Message, exception.StackTrace, exception.Source);
-                throw;
-            }
+            Logger.InfoLog($"-Creating meta for {meta.ModName}");
+            string modMeta = JsonConvert.SerializeObject(meta, Formatting.Indented);
+            File.WriteAllText(Path.Combine(PathList.ModsFolderPath, meta.ModName + ".json"), modMeta);
         }
 
     }

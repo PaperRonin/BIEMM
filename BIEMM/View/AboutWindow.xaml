@@ -1,0 +1,70 @@
+﻿<Window x:Class="BIEMM.View.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BIEMM"
+        mc:Ignorable="d"
+        Style="{StaticResource MainMenu}"
+        Loaded="AboutWindow_OnLoaded"
+        Title="AboutWindow" Height="400" Width="350">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="25"/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Grid.Row="0" 
+                   Grid.ColumnSpan="6"
+                   Style="{StaticResource Header}"
+                   MouseDown="Header_OnMouseLeftButtonDown">
+        </Rectangle>
+
+        <Button x:Name="CloseButton"
+                Style="{StaticResource MenuButton}"
+                Background="{StaticResource WindowHeaderButtonsColor}"
+                FontWeight="Bold" 
+                Grid.Row="0" 
+                Grid.Column="2"
+                Click="CloseButton_OnClick" Height="20" Width="25">X</Button>
+
+        <Button x:Name="MinimizeButton"
+                Style="{StaticResource MenuButton}"
+                Background="{StaticResource WindowHeaderButtonsColor}"
+                FontWeight="Bold" 
+                Margin="-52,0,0,0"  
+                Grid.Row="0" 
+                Grid.Column="2"
+                Click="MinimizeButton_OnClick" Width="25" Height="20">-</Button>
+
+        <TabControl
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Margin="3,3,3,3"
+            Background ="#3d3c3c"
+            BorderBrush="#3d3c3c">
+            <TabItem Header="About" Foreground="CornflowerBlue" IsSelected="True" Background="#3d3c3c">
+                <ScrollViewer FontSize="15">
+                    <TextBlock x:Name="AboutTextBox" Text="You shouldn't have seen it OwO" Foreground="Cornsilk" Margin="5,10,0,0"/>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Changelog" Foreground="CornflowerBlue" Background="#3d3c3c">
+                <ScrollViewer FontSize="15">
+                    <TextBlock x:Name="ChangelogTextBox" TextWrapping="Wrap" Text="You shouldn't have seen it OwO"  Foreground="Cornsilk" Margin="5,10,0,0"/>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Tips" Foreground="CornflowerBlue" Background="#3d3c3c">
+                <ScrollViewer FontSize="15">
+                    <TextBlock x:Name="TipsTextBox" TextWrapping="Wrap" Text="You shouldn't have seen it OwO"  Foreground="Cornsilk" Margin="5,10,0,0"/>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

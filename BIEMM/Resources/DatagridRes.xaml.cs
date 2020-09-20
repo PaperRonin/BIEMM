@@ -1,6 +1,5 @@
-﻿using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls.Primitives;
+﻿using System.Windows;
+using BIEMM.Utils.ModManaging;
 
 namespace BIEMM.Resources
 {

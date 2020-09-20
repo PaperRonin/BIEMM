@@ -1,5 +1,5 @@
 ﻿BIEMM
-1.0.0.0
+0.8.3.0
 
 winexe
 C#
@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Миша\source\repos\BIEMM\BIEMM\App.xaml
-3609893669
+4-1154384344
 
-15254242920
-19528658408
-MainWindow.xaml;Resources\DataGridRes.xaml;Resources\WindowRes.xaml;
+172145891291
+196-1623727235
+Resources\DataGridRes.xaml;Resources\WindowRes.xaml;View\AboutWindow.xaml;View\MainWindow.xaml;
 
 False
 

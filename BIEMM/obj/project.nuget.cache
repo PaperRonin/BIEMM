@@ -1,10 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "4bFu1mhkW9iex7iKzQze+cs1Vz2BepWkim9QmEW2eiXi2lerr7S4j3295ZuTx9aHn0QD/1HVoU8vY/MSgVuDKA==",
+  "dgSpecHash": "wg0fMdmLQseVWula+JQQk2gweeoUhVdxxnrtjB2OCZvNg5ARzk1Ly1GJJ5TGN2M6tjPXKasaUObOm0HP1c0w1A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Миша\\source\\repos\\BIEMM\\BIEMM\\BIEMM.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Миша\\.nuget\\packages\\autoupdater.net.official\\1.6.3\\autoupdater.net.official.1.6.3.nupkg.sha512",
     "C:\\Users\\Миша\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"Autoupdater.NET.Official 1.6.3\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \".NETCoreApp,Version=v3.1\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "Autoupdater.NET.Official",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

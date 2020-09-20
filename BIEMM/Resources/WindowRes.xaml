@@ -27,7 +27,6 @@
         <Setter Property="Icon" Value="Images/c_3.png"></Setter>
     </Style>
 
-
     <Style TargetType="Button" x:Key="MenuButton">
 
         <Setter Property="OverridesDefaultStyle" Value="True" />

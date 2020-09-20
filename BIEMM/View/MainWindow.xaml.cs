@@ -1,14 +1,16 @@
-﻿using BIEMM.Utils;
-using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
+using BIEMM.Model;
+using BIEMM.Utils;
+using BIEMM.Utils.ModManaging;
+using Microsoft.Win32;
 
-namespace BIEMM
+namespace BIEMM.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,19 +27,11 @@ namespace BIEMM
             ModMenu.DataContext = ModList;
             ModManager.BindModList(ModList);
         }
-
-        private void CloseButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-        private void MinimizeButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
             try
             {
+                Utils.Updater.Run();
                 string AppDirPath = Directory.GetParent(Assembly.GetEntryAssembly().Location).FullName;
                 string exePathSaveFile = Path.GetFullPath(Path.Combine(AppDirPath, "exePath.txt"));
                 File.Create(AppDirPath + "\\Info.log").Close();
@@ -96,6 +90,24 @@ namespace BIEMM
                 throw;
             }
         }
+        private void Header_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+        private void AboutButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var w = new AboutWindow();
+            w.Show();
+        }
+        private void MinimizeButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+        private void CloseButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            foreach (Window window in Application.Current.Windows) window.Close();
+        }
+
         private void OpenModsButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -122,6 +134,8 @@ namespace BIEMM
         private void ApplyModsButton_Click(object sender, RoutedEventArgs e)
         {
             ModManager.ApplyMods();
+            MessageBox.Show("Mods have been applied!", "BIEMM", MessageBoxButton.OK,
+                MessageBoxImage.Information);
         }
         private void RunGameButton_Click(object sender, RoutedEventArgs e)
         {
@@ -146,10 +160,5 @@ namespace BIEMM
                 }
             }
         }
-        private void Header_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-
     }
 }

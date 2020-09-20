@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
 namespace BIEMM.Utils
 {
@@ -12,26 +11,20 @@ namespace BIEMM.Utils
 
         public static void GeneratePaths(string exePath)
         {
-            try
-            {
-                Logger.InfoLog("Generating Paths to the mod directories");
 
-                ExePath = exePath;
+            Logger.InfoLog("Generating Paths to the mod directories");
 
-                string tempDirPath = Directory.GetParent(exePath).FullName;
+            ExePath = exePath;
 
-                BepPluginPath = Path.GetFullPath(Path.Combine(tempDirPath, "BepInEx", "plugins"));
+            string tempDirPath = Directory.GetParent(exePath).FullName;
 
-                BepMonomodPath = Path.GetFullPath(Path.Combine(tempDirPath, "BepInEx", "monomod"));
+            BepPluginPath = Path.GetFullPath(Path.Combine(tempDirPath, "BepInEx", "plugins"));
 
-                ModsFolderPath = Directory.CreateDirectory(Path.GetFullPath(Path.Combine(tempDirPath, "Mods"))).FullName;
+            BepMonomodPath = Path.GetFullPath(Path.Combine(tempDirPath, "BepInEx", "monomod"));
 
-            }
-            catch (Exception exception)
-            {
-                Logger.ErrorLog(exception.Message, exception.StackTrace, exception.Source);
-                throw;
-            }
+            ModsFolderPath = Directory.CreateDirectory(Path.GetFullPath(Path.Combine(tempDirPath, "Mods"))).FullName;
+
+
         }
     }
 }

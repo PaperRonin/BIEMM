@@ -1,0 +1,12 @@
+---------------------------------------------------
+v0.83
+---------------------------------------------------
++Autoupdate
++Popups for clearity
++New window with changelog and tips
++Metafiles 
+---------------------------------------------------
+v0.82
+---------------------------------------------------
++Logging.
++Mod blacklist modification possibility.

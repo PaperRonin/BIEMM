@@ -1,4 +1,6 @@
-﻿namespace BIEMM
+﻿using BIEMM.Enums;
+
+namespace BIEMM.Model
 {
     public class ModMeta
     {

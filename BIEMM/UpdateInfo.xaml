@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<item>
+    <version>0.8.3.0</version>
+    <url>https://github.com/PaperRonin/BIEMM/releases/download/0.83/BIEMM.zip</url>
+    <changelog>https://raw.githubusercontent.com/PaperRonin/BIEMM/master/BIEMM/Resources/Text/Changelog.txt</changelog>
+    <mandatory>false</mandatory>
+</item>

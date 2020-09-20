@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows;
 
-namespace BIEMM
+namespace BIEMM.Utils
 {
     public static class Logger
     {
@@ -12,16 +11,16 @@ namespace BIEMM
         {
             var appPath = Directory.GetParent(Assembly.GetEntryAssembly().Location).FullName;
 
-            using var sw = new StreamWriter(new FileStream(appPath + "\\Error.log", FileMode.Append, FileAccess.Write));
-            sw.WriteLine($"Source: {source}");
-
-            sw.WriteLine($"Date / Time: {DateTime.Now}");
-
-            sw.WriteLine($"Message: {msg}");
-
-            sw.WriteLine($"StackTrace: {stkTrace}");
+            using var sw = new StreamWriter(new FileStream(appPath + "\\Error.log", FileMode.Create, FileAccess.Write));
 
             sw.WriteLine(new string('=', 100));
+            sw.WriteLine($"Source: {source}");
+            sw.WriteLine($"Date / Time: {DateTime.Now}");
+            sw.WriteLine($"Message: {msg}");
+            sw.WriteLine($"StackTrace: {stkTrace}");
+            sw.WriteLine(new string('=', 100));
+            MessageBox.Show($"{msg}\nFor more information look in Error.log", "BIEMM", MessageBoxButton.OK,
+                MessageBoxImage.Error);
         }
 
         public static void InfoLog(string info)
