@@ -11,6 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Utils\DirectoryWatcher.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Changelog.txt" />
     <None Remove="Resources\Text\About.txt" />
     <None Remove="Resources\Text\BlackList.txt" />

@@ -6,12 +6,10 @@ C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Release\netcoreapp3.1\BIEMM.dll
 C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Release\netcoreapp3.1\BIEMM.pdb
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\Resources\DatagridRes.baml
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\Resources\WindowRes.baml
-C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\MainWindow.g.cs
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\App.g.cs
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\BIEMM_MarkupCompile.cache
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\BIEMM_MarkupCompile.lref
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\App.baml
-C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\MainWindow.baml
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\BIEMM.g.resources
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\BIEMM.AssemblyInfoInputs.cache
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\BIEMM.AssemblyInfo.cs
@@ -21,7 +19,6 @@ C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\BIEMM.pdb
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\BIEMM.genruntimeconfig.cache
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\BIEMM.csprojAssemblyReference.cache
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\Resources\DataGridRes.g.cs
-C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Release\netcoreapp3.1\blackList.txt
 C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Release\netcoreapp3.1\AutoUpdater.NET.dll
 C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Release\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Release\netcoreapp3.1\ar\AutoUpdater.NET.resources.dll
@@ -45,6 +42,8 @@ C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Release\netcoreapp3.1\zh-tw\AutoU
 C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Release\netcoreapp3.1\zh\AutoUpdater.NET.resources.dll
 C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Release\netcoreapp3.1\Mono.Cecil.dll
 C:\Users\Миша\source\repos\BIEMM\BIEMM\bin\Release\netcoreapp3.1\MonoMod.exe
-C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\AboutWindow.g.cs
-C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\AboutWindow.baml
 C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\BIEMM.csproj.CopyComplete
+C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\View\AboutWindow.g.cs
+C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\View\MainWindow.g.cs
+C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\View\AboutWindow.baml
+C:\Users\Миша\source\repos\BIEMM\BIEMM\obj\Release\netcoreapp3.1\View\MainWindow.baml

@@ -52,7 +52,7 @@
             BorderBrush="#3d3c3c">
             <TabItem Header="About" Foreground="CornflowerBlue" IsSelected="True" Background="#3d3c3c">
                 <ScrollViewer FontSize="15">
-                    <TextBlock x:Name="AboutTextBox" Text="You shouldn't have seen it OwO" Foreground="Cornsilk" Margin="5,10,0,0"/>
+                    <TextBlock x:Name="AboutTextBox" Text="You shouldn't have seen it OwO" Foreground="Cornsilk" Margin="5,10,10,0"/>
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Changelog" Foreground="CornflowerBlue" Background="#3d3c3c">
@@ -62,7 +62,7 @@
             </TabItem>
             <TabItem Header="Tips" Foreground="CornflowerBlue" Background="#3d3c3c">
                 <ScrollViewer FontSize="15">
-                    <TextBlock x:Name="TipsTextBox" TextWrapping="Wrap" Text="You shouldn't have seen it OwO"  Foreground="Cornsilk" Margin="5,10,0,0"/>
+                    <TextBlock x:Name="TipsTextBox" TextWrapping="Wrap" Text="You shouldn't have seen it OwO"  Foreground="Cornsilk" Margin="5,10,10,0"/>
                 </ScrollViewer>
             </TabItem>
         </TabControl>

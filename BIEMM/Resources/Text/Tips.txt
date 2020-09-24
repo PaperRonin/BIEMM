@@ -1,1 +1,7 @@
-don't crush the app pls
+*By clicking "enabled" text in menu list you can turn all mods off and on at once
+
+*You can change mod type by changing according property in json file of the mod
+
+*All enabled mods are placed in BepInEx/plugins and  BepInEx/mods
+
+*If you have any problems or suggestions - tag me at official RW discord server (@PaperRonin#4748)

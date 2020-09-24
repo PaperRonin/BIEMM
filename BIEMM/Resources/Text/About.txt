@@ -1,1 +1,5 @@
-made by me
+A GUI for Rain World BepInEx
+
+Made by PaperRonin
+
+Current version:

@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Миша\source\repos\BIEMM\BIEMM\App.xaml
-41570852240
+4-1154384344
 
-15-851750292
+15-755174116
 196-1623727235
-AboutWindow.xaml;MainWindow.xaml;Resources\DataGridRes.xaml;Resources\WindowRes.xaml;
+Resources\DataGridRes.xaml;Resources\WindowRes.xaml;View\AboutWindow.xaml;View\MainWindow.xaml;
 
 False
 

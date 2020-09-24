@@ -27,6 +27,9 @@ namespace BIEMM.View
             stream = assembly.GetManifestResourceStream(resourceName);
             reader = new StreamReader(stream);
             AboutTextBox.Text = reader.ReadToEnd();
+            //to get current version of the app
+            System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+            AboutTextBox.Text += " " + fvi.FileVersion;
 
             Logger.InfoLog("Loading text for Tips TextBox");
             resourceName = "BIEMM.Resources.Text.Tips.txt";

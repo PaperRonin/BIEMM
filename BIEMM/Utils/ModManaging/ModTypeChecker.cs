@@ -10,8 +10,6 @@ namespace BIEMM.Utils.ModManaging
     {
         public static ModTypes GetModType(FileInfo modFile)
         {
-            // Patch checker from PartialityLauncher
-
             ModuleDefinition modDef = ModuleDefinition.ReadModule(modFile.FullName);
 
             Type patchType = typeof(MonoMod.MonoModPatch);
